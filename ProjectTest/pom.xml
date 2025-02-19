@@ -14,6 +14,17 @@
     <version>4.27.0</version>
   </dependency>
 
+  <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+  <dependency>
+    <groupId>org.testng</groupId>
+    <artifactId>testng</artifactId>
+    <version>7.11.0</version>
+    <scope>compile</scope>
+  </dependency>
+
+
+
+
 </dependencies>
 
 
@@ -36,6 +47,8 @@
     <apex.appconf.classpath>classpath/*</apex.appconf.classpath>
     <apex.appconf.files>files/*</apex.appconf.files>
     <apex.appconf.app>app/*</apex.appconf.app>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
   </properties>
 
   <build>
