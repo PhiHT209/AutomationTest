@@ -34,7 +34,7 @@ public class BTVNDay13 extends CommonBase {
         assertTrue(driver.findElement(By.xpath("//p[text()='Quản lý người dùng' ]")).isDisplayed());
     }
     @Test
-    public void loginThatbai_Saiemail() //TestCase login sai pass
+    public void loginThatbai_Saiemail() //TestCase login sai email
     {
         loginPageBTVN13 login = new loginPageBTVN13(driver);
         login.chucnangLogin("admin1@gmail.com", "12345678");
@@ -71,9 +71,8 @@ public class BTVNDay13 extends CommonBase {
         assertTrue(errorMessage.isDisplayed());
     }
     @AfterMethod
-    public void closeBrowser() throws InterruptedException
+    public void closeBrowser()
    {
-       Thread.sleep(5000);
        driver.close();
    }
 }
