@@ -21,16 +21,6 @@ public class BTVNDay12 extends CommonBase {
 
         Select select = new Select(listDropdown);
         select.selectByValue("VNM");
-//        if (listDropdown.isSelected()==false)
-//        {
-//            driver.findElement(By.xpath("//*[@id=\"post-2646\"]/div[2]/div/div/div/p/select")).click();
-//            System.out.println("Choose Dropdown list");
-//        }
-//        WebElement checkboxReading = driver.findElement(By.id("hobbies-checkbox-1"));
-//        if (checkboxReading.isSelected()==false)
-//        {
-//            driver.findElement(By.xpath("//label[text()='Reading']")).click();
-//            System.out.println("Checkbox reading has clicked");
-//        }
+
     }
 }

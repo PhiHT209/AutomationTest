@@ -11,8 +11,15 @@
   <dependency>
     <groupId>org.seleniumhq.selenium</groupId>
     <artifactId>selenium-java</artifactId>
-    <version>4.27.0</version>
+    <version>4.28.0</version>
   </dependency>
+
+  <dependency>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>selenium-devtools</artifactId>
+    <version>4.28.0</version> <!-- Hoặc latest -->
+  </dependency>
+
 
   <!-- https://mvnrepository.com/artifact/org.testng/testng -->
   <dependency>
@@ -66,8 +73,8 @@
         <version>3.3</version>
         <configuration>
           <encoding>UTF-8</encoding>
-          <source>1.7</source>
-          <target>1.7</target>
+          <source>1.8</source>
+          <target>1.8</target>
           <debug>true</debug>
           <optimize>false</optimize>
           <showDeprecation>true</showDeprecation>
