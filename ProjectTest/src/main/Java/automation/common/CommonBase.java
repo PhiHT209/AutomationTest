@@ -12,7 +12,7 @@ public class CommonBase {
         driver = new FirefoxDriver();
         driver.get(URL);
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         return driver;
     }
 }

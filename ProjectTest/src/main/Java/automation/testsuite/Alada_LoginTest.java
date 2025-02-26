@@ -14,7 +14,7 @@ public class Alada_LoginTest extends CommonBase {
     {
         driver = initBrowser(CT_PageURL.URL_ALADA_DEMO);
     }
-    @Test
+    @Test(priority = 1)
     public void loginSuccess() //TestCase login thanh cong
     {
         loginPage login = new loginPage(driver);
@@ -22,7 +22,7 @@ public class Alada_LoginTest extends CommonBase {
         //Assert Dashboard
         assertTrue(driver.findElement(By.xpath("//a[text()='Khóa học của tôi' and @class='fleft martop20 khct']")).isDisplayed());
     }
-    @Test
+    @Test(priority = 2)
     public void loginFailed_IncorrectPass() //TestCase login sai pass
     {
         loginPage login = new loginPage(driver);
@@ -30,7 +30,7 @@ public class Alada_LoginTest extends CommonBase {
         //Assert Dashboard
         assertTrue(driver.findElement(By.xpath("//p[text()='Mật khẩu sai.']")).isDisplayed());
     }
-    @Test
+    @Test(priority = 3)
     public void loginFailed_IncorrectEmail() //TestCase login sai email
     {
         loginPage login = new loginPage(driver);
