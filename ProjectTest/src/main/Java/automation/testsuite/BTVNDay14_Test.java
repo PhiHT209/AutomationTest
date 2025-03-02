@@ -63,20 +63,15 @@ public class BTVNDay14_Test extends CommonBase {
         assertTrue(driver.findElement(By.xpath("//a[text()='Khóa học của tôi' and @class='fleft martop20 khct']")).isDisplayed());
     }
 
-//    @Test(priority = 3)
-//    public void logOut()
-//    {
-//        PageBTVN14 logout = new PageBTVN14(driver);
-//        logout.logOut();
-//    }
 
 
 
-//    @AfterMethod
-//    public void closeBrowser()
-//    {
-//        driver.close();
-//    }
+
+    @AfterMethod
+    public void closeBrowser()
+    {
+        driver.close();
+    }
 
 
 }
