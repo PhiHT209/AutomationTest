@@ -10,8 +10,6 @@ import org.openqa.selenium.By;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-
 import static org.testng.Assert.assertTrue;
 
 public class BTVNDay14_Test extends CommonBase {
@@ -32,11 +30,8 @@ public class BTVNDay14_Test extends CommonBase {
         String randomePass = fake.internet().password(8,12);
         String randomeFone = "09" + fake.number().digits(8);
 
-
         PageBTVN14 reg = new PageBTVN14(driver);
-        reg.chucnangRegBTVN_Day14(
-                randomeName, randomeemail, randomeemail, randomePass, randomePass, randomeFone
-        );
+        reg.chucnangRegBTVN_Day14(randomeName, randomeemail, randomeemail, randomePass, randomePass, randomeFone);
         assertTrue(driver.findElement(By.xpath("//a[text()='Khóa học của tôi' and @class='fleft martop20 khct']")).isDisplayed());
     }
 
@@ -48,24 +43,20 @@ public class BTVNDay14_Test extends CommonBase {
         login.chucnangLoginBTVN_Day14("phihoang249@gmail.com","Abcd1234");
         assertTrue(driver.findElement(By.xpath("//a[text()='Khóa học của tôi' and @class='fleft martop20 khct']")).isDisplayed());
 
-        // đổi MK mới
+        //Đổi mật khẩu
         login.chucnangDoiMKMoi("Abcd1234","Abcd1234", "Abcd1234");
 
-        // bỏ qua bảng alert
+        //Xác nhận bảng Alert
         Alert alert = driver.switchTo().alert();
         alert.accept();
 
-        // Logout
+        //Logout
         login.logOut();
 
         //Login again
         login.chucnangLoginBTVN_Day14("phihoang249@gmail.com","Abcd1234");
         assertTrue(driver.findElement(By.xpath("//a[text()='Khóa học của tôi' and @class='fleft martop20 khct']")).isDisplayed());
     }
-
-
-
-
 
     @AfterMethod
     public void closeBrowser()

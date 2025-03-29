@@ -89,5 +89,4 @@ public class PageBTVN14 {
         avatar.click();
         buttonLogout.click();
     }
-
 }

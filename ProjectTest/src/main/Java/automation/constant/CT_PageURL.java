@@ -10,4 +10,6 @@ public class CT_PageURL {
     public static String URL_BTVN13 = "http://test-system.crmstar.vn/ ";
     public static String URL_CRMStar = "http://test-system.crmstar.vn/";
     public static String URL_BTVN14 = "https://alada.vn/";
+    public static String URL_Alert = "https://demo.automationtesting.in/Alerts.html";
+    public static String URL_Final = "http://test-system.crmstar.vn/";
 }

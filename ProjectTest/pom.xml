@@ -14,11 +14,7 @@
     <version>4.28.0</version>
   </dependency>
 
-  <dependency>
-    <groupId>org.seleniumhq.selenium</groupId>
-    <artifactId>selenium-devtools</artifactId>
-    <version>4.28.0</version> <!-- Hoặc latest -->
-  </dependency>
+
 
   <!-- https://mvnrepository.com/artifact/org.testng/testng -->
   <dependency>
@@ -68,6 +64,13 @@
 
   <build>
     <plugins>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.0.0-M7</version>
+      </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-eclipse-plugin</artifactId>
@@ -76,13 +79,14 @@
           <downloadSources>true</downloadSources>
         </configuration>
       </plugin>
+
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.3</version>
+        <version>3.8.1</version>
         <configuration>
           <encoding>UTF-8</encoding>
-          <source>1.8</source>
-          <target>1.8</target>
+          <source>17</source>
+          <target>17</target>
           <debug>true</debug>
           <optimize>false</optimize>
           <showDeprecation>true</showDeprecation>
