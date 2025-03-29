@@ -23,6 +23,8 @@ import static org.testng.Assert.assertTrue;
 
 public class ProjecFinal_Test extends CommonBase {
     private ProjectFinal projectFinal;
+    private String tenPhongBan;
+
 
     // Hàm tạo chuỗi random
     public String generateRandomString(int length) {
@@ -46,17 +48,26 @@ public class ProjecFinal_Test extends CommonBase {
         assertTrue( driver.findElement(By.xpath("//p[@class='text']")).isDisplayed());
     }
 
+
     // Function test Quản Lý Phòng Ban
     @Test (priority = 1)
     public void FuntionLogin_AccessPhongBan()
     {
         // Thêm Mới
-        String random = "Phòng " + generateRandomString(5);
-        projectFinal.FuntionPhongBan(random);
+        tenPhongBan = "Phòng " + generateRandomString(5);
+        projectFinal.FuntionPhongBan(tenPhongBan);
         assertTrue(driver.findElement(By.xpath("//div[@class='toast-message']")).isDisplayed());
     }
 
-    @Test (priority = 2)
+    @Test (priority = 2, dependsOnMethods = "FuntionLogin_AccessPhongBan")
+    public void FuntionTimKiem()
+    {
+        // Tim Kiem
+        projectFinal.FunctionTimKiem(tenPhongBan);
+        assertTrue(driver.findElement(By.xpath("//td[contains(text(),'" + tenPhongBan + "')]")).isDisplayed());
+    }
+
+    @Test (priority = 3)
     public void FuntionSuaPhongBan()
     {
         // Sửa
@@ -65,7 +76,7 @@ public class ProjecFinal_Test extends CommonBase {
         assertTrue(driver.findElement(By.xpath("//div[@class='toast-message']")).isDisplayed());
     }
 
-    @Test (priority = 3)
+    @Test (priority = 4)
     public void FuntionXemPhongBan()
     {
         // Xem
@@ -73,7 +84,7 @@ public class ProjecFinal_Test extends CommonBase {
         assertTrue(driver.findElement(By.xpath("//p[@class='text']")).isDisplayed());
     }
 
-    @Test (priority = 4)
+    @Test (priority = 5)
     public void FuntionXoaPhongBan()
     {
         // Xóa
@@ -87,14 +98,13 @@ public class ProjecFinal_Test extends CommonBase {
         assertTrue(driver.findElement(By.xpath("//p[@class='text']")).isDisplayed());
     }
 
-    @Test (priority = 5)
+    @Test (priority = 6)
     public void FuntionXuatExcel()
     {
         // Xuất Excel
         projectFinal.FunctionXuatExcel();
         assertTrue(driver.findElement(By.xpath("//p[@class='text']")).isDisplayed());
     }
-
     @AfterMethod
     public void closeBrowser()
     {

@@ -33,6 +33,9 @@ public class ProjectFinal {
     // Xuat Excel
     @FindBy(xpath = "//button[contains(text(),'Xuất ra Excel')]") WebElement buttonXuatexcel;
 
+    // Tim Kiem
+    @FindBy(xpath = "//input[@placeholder='Nhập từ khóa cần tìm kiếm']") WebElement textTimKiem;
+    @FindBy(xpath = "//button[contains(text(),'Tìm kiếm')]") WebElement buttonTimKiem;
 
     public ProjectFinal(WebDriver driver)
     {
@@ -85,5 +88,14 @@ public class ProjectFinal {
     {
         buttonPhongBan.click();
         buttonXuatexcel.click();
+    }
+
+    public void FunctionTimKiem(String tenPhongBan)
+    {
+        buttonPhongBan.click();
+        textTimKiem.clear();
+        textTimKiem.sendKeys(tenPhongBan);
+        buttonTimKiem.click();
+
     }
 }
