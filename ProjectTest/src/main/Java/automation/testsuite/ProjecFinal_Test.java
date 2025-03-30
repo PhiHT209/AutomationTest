@@ -98,13 +98,13 @@ public class ProjecFinal_Test extends CommonBase {
         assertTrue(driver.findElement(By.xpath("//p[@class='text']")).isDisplayed());
     }
 
-//    @AfterMethod
-//    public void closeBrowser()
-//    {
-//        if (driver != null)
-//        {
-//            driver.quit();
-//        }
-//    }
+    @AfterMethod
+    public void closeBrowser()
+    {
+        if (driver != null)
+        {
+            driver.quit();
+        }
+    }
 
 }
