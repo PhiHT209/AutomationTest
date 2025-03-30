@@ -1,5 +1,4 @@
 package automation.testsuite;
-
 import automation.common.CommonBase;
 import automation.constant.CT_PageURL;
 import automation.pageLocator.ProjectFinal;
@@ -12,31 +11,26 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import java.time.Duration;
 import java.util.Random;
-
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
-
-
 
 public class ProjecFinal_Test extends CommonBase {
     private ProjectFinal projectFinal;
     private String tenPhongBan;
 
-
-    // Hàm tạo chuỗi random
-    public String generateRandomString(int length) {
-        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-        StringBuilder sb = new StringBuilder();
+    // Update hàm tạo tên phòng ban
+    public static String generateMeaningfulString() {
+        // List các tên phòng ban
+        String[] meaningfulWords = {"IT", "HR", "KT", "MKT", "NS", "CSKH", "TCKT"};
         Random random = new Random();
-        for (int i = 0; i < length; i++) {
-            sb.append(characters.charAt(random.nextInt(characters.length())));
-        }
-        return sb.toString();
+        String prefix = meaningfulWords[random.nextInt(meaningfulWords.length)];
+        // Tạo số ngẫu nhiên
+        int randomNumber = 100 + random.nextInt(900); // Tạo số từ 100 đến 999
+        // Ghép chuỗi
+        return prefix + randomNumber;
     }
-
 
     // Open browser
     @BeforeMethod
@@ -48,63 +42,61 @@ public class ProjecFinal_Test extends CommonBase {
         assertTrue( driver.findElement(By.xpath("//p[@class='text']")).isDisplayed());
     }
 
-
     // Function test Quản Lý Phòng Ban
+    // Thêm Mới
     @Test (priority = 1)
     public void FuntionLogin_AccessPhongBan()
     {
-        // Thêm Mới
-        tenPhongBan = "Phòng " + generateRandomString(5);
+        tenPhongBan = "Phòng " + generateMeaningfulString();
         projectFinal.FuntionPhongBan(tenPhongBan);
         assertTrue(driver.findElement(By.xpath("//div[@class='toast-message']")).isDisplayed());
     }
 
+    // Tim Kiem
     @Test (priority = 2, dependsOnMethods = "FuntionLogin_AccessPhongBan")
     public void FuntionTimKiem()
     {
-        // Tim Kiem
         projectFinal.FunctionTimKiem(tenPhongBan);
         assertTrue(driver.findElement(By.xpath("//td[contains(text(),'" + tenPhongBan + "')]")).isDisplayed());
     }
 
+    // Sửa
     @Test (priority = 3)
     public void FuntionSuaPhongBan()
     {
-        // Sửa
-        String random1 = "Phòng " + generateRandomString(5);
+        String random1 = "Phòng " + generateMeaningfulString();
         projectFinal.FuntionSuaPhongBan(random1);
         assertTrue(driver.findElement(By.xpath("//div[@class='toast-message']")).isDisplayed());
     }
 
+    // Xem
     @Test (priority = 4)
     public void FuntionXemPhongBan()
     {
-        // Xem
         projectFinal.FuntionXemPhongBan();
         assertTrue(driver.findElement(By.xpath("//p[@class='text']")).isDisplayed());
     }
 
+    // Xóa
     @Test (priority = 5)
     public void FuntionXoaPhongBan()
     {
-        // Xóa
         projectFinal.FuntionXoaPhongBan();
-
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.alertIsPresent());
-
         Alert alert = driver.switchTo().alert();
         alert.accept();
         assertTrue(driver.findElement(By.xpath("//p[@class='text']")).isDisplayed());
     }
 
+    // Xuất Excel
     @Test (priority = 6)
     public void FuntionXuatExcel()
     {
-        // Xuất Excel
         projectFinal.FunctionXuatExcel();
         assertTrue(driver.findElement(By.xpath("//p[@class='text']")).isDisplayed());
     }
+
     @AfterMethod
     public void closeBrowser()
     {
