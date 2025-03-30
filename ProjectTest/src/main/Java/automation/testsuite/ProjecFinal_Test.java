@@ -61,11 +61,12 @@ public class ProjecFinal_Test extends CommonBase {
     }
 
     // Sửa
-    @Test (priority = 3)
+    @Test (priority = 3, dependsOnMethods = "FuntionLogin_AccessPhongBan")
     public void FuntionSuaPhongBan()
     {
-        String random1 = "Phòng " + generateMeaningfulString();
-        projectFinal.FuntionSuaPhongBan(random1);
+        String tenPhongBanMoi = "Phòng " + generateMeaningfulString();
+        tenPhongBan = tenPhongBanMoi;
+        projectFinal.FuntionSuaPhongBan( tenPhongBanMoi );
         assertTrue(driver.findElement(By.xpath("//div[@class='toast-message']")).isDisplayed());
     }
 
@@ -97,13 +98,13 @@ public class ProjecFinal_Test extends CommonBase {
         assertTrue(driver.findElement(By.xpath("//p[@class='text']")).isDisplayed());
     }
 
-    @AfterMethod
-    public void closeBrowser()
-    {
-        if (driver != null)
-        {
-            driver.quit();
-        }
-    }
+//    @AfterMethod
+//    public void closeBrowser()
+//    {
+//        if (driver != null)
+//        {
+//            driver.quit();
+//        }
+//    }
 
 }
